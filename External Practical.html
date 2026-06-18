@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Result Calculator</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+            width: 350px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .result {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Student Result Calculator</h2>
+
+        <input type="number" id="sub1" placeholder="Subject 1 Marks">
+        <input type="number" id="sub2" placeholder="Subject 2 Marks">
+        <input type="number" id="sub3" placeholder="Subject 3 Marks">
+        <input type="number" id="sub4" placeholder="Subject 4 Marks">
+        <input type="number" id="sub5" placeholder="Subject 5 Marks">
+
+        <button onclick="calculateResult()">Calculate Result</button>
+
+        <div class="result" id="output"></div>
+    </div>
+
+    <script>
+        function calculateResult() {
+            let s1 = Number(document.getElementById("sub1").value);
+            let s2 = Number(document.getElementById("sub2").value);
+            let s3 = Number(document.getElementById("sub3").value);
+            let s4 = Number(document.getElementById("sub4").value);
+            let s5 = Number(document.getElementById("sub5").value);
+
+            let total = s1 + s2 + s3 + s4 + s5;
+            let percentage = total / 5;
+
+            let division;
+
+            if (percentage >= 60) {
+                division = "First Division";
+            } 
+            else if (percentage >= 45) {
+                division = "Second Division";
+            } 
+            else if (percentage >= 33) {
+                division = "Third Division";
+            } 
+            else {
+                division = "Fail";
+            }
+
+            document.getElementById("output").innerHTML =
+                "Total Marks: " + total + "<br>" +
+                "Percentage: " + percentage.toFixed(2) + "%<br>" +
+                "Division: " + division;
+        }
+    </script>
+
+</body>
+</html>
